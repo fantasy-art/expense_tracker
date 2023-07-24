@@ -1,8 +1,8 @@
-import 'package:expense_tracker/widgets/expenses/expenses_list.dart';
-import 'package:expense_tracker/widgets/new_expense.dart';
 import 'package:flutter/material.dart';
 
-import '../data/expense_data.dart';
+import 'package:expense_tracker/widgets/expenses/expenses_list.dart';
+import 'package:expense_tracker/widgets/new_expense.dart';
+import '../models/expense.dart';
 
 class ExpensesView extends StatefulWidget {
   const ExpensesView({super.key});
@@ -12,11 +12,29 @@ class ExpensesView extends StatefulWidget {
 }
 
 class _ExpensesViewState extends State<ExpensesView> {
+  final List<Expense> registeredExpenses = [
+    Expense(
+        title: 'Flutter Course',
+        amount: 19.99,
+        date: DateTime.now(),
+        category: Category.work),
+    Expense(
+        title: 'Cinema',
+        amount: 15.69,
+        date: DateTime.now(),
+        category: Category.leisure),
+  ];
+
   void _openAddExpenseOverlay() {
     showModalBottomSheet(
       context: context,
-      builder: (ctx) => const NewExpense(),
+      builder: (ctx) => NewExpense(onAddExpense: _addExpense),
     );
+  }
+
+  void _addExpense(Expense expense) {
+    setState(() {});
+    registeredExpenses.add(expense);
   }
 
   @override
