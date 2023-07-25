@@ -9,21 +9,21 @@ class ExpenseItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-        margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+        margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
           child: Column(
             children: [
-              Text(
-                idExpense.toString(),
-                textAlign: TextAlign.center,
-                style:
-                    const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              CircleAvatar(
+                backgroundColor: Colors.white,
+                child: Text(
+                  idExpense.toString(),
+                  style: Theme.of(context).textTheme.titleLarge,
+                ),
               ),
               Text(
                 expense.title,
-                style:
-                    const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                style: Theme.of(context).textTheme.titleLarge,
               ),
               const Divider(),
               const SizedBox(height: 4),

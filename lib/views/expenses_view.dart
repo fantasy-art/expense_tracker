@@ -1,3 +1,4 @@
+import 'package:expense_tracker/main.dart';
 import 'package:flutter/material.dart';
 
 import 'package:expense_tracker/widgets/expenses/expenses_list.dart';
@@ -47,6 +48,7 @@ class _ExpensesViewState extends State<ExpensesView> {
     });
     ScaffoldMessenger.of(context).clearSnackBars();
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      backgroundColor: kColorScheme.onPrimaryContainer,
       duration: const Duration(seconds: 3),
       content: Text('Expense Deleted (${expense.title})'),
       action: SnackBarAction(
@@ -82,7 +84,8 @@ class _ExpensesViewState extends State<ExpensesView> {
       ),
       body: Column(
         children: [
-          const Text('The Chart', style: TextStyle(fontSize: 30)),
+          const SizedBox(height: 16),
+          Text('The Chart', style: Theme.of(context).textTheme.headlineMedium),
           const SizedBox(height: 16),
           mainContent,
         ],
