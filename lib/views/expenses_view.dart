@@ -1,4 +1,5 @@
 import 'package:expense_tracker/main.dart';
+import 'package:expense_tracker/widgets/chart/chart.dart';
 import 'package:flutter/material.dart';
 
 import 'package:expense_tracker/widgets/expenses/expenses_list.dart';
@@ -86,6 +87,7 @@ class _ExpensesViewState extends State<ExpensesView> {
         children: [
           const SizedBox(height: 16),
           Text('The Chart', style: Theme.of(context).textTheme.headlineMedium),
+          Chart(expense: registeredExpenses),
           const SizedBox(height: 16),
           mainContent,
         ],

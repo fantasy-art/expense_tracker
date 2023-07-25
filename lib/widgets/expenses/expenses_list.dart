@@ -22,7 +22,6 @@ class ExpensesList extends StatelessWidget {
             decoration: BoxDecoration(
                 color: Theme.of(context).colorScheme.error.withOpacity(0.7),
                 borderRadius: BorderRadius.circular(16)),
-            child: const Text('Delete'),
           ),
           key: ValueKey(expenses[index]),
           onDismissed: (direction) => onRemoveExpense(expenses[index]),

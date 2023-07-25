@@ -14,11 +14,14 @@ class ExpenseItem extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
           child: Column(
             children: [
-              CircleAvatar(
-                backgroundColor: Colors.white,
-                child: Text(
-                  idExpense.toString(),
-                  style: Theme.of(context).textTheme.titleLarge,
+              Container(
+                alignment: Alignment.centerLeft,
+                child: CircleAvatar(
+                  backgroundColor: Colors.white,
+                  child: Text(
+                    idExpense.toString(),
+                    style: Theme.of(context).textTheme.titleLarge,
+                  ),
                 ),
               ),
               Text(
