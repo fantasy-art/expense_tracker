@@ -19,7 +19,10 @@ class ExpensesList extends StatelessWidget {
         itemBuilder: (context, index) => Dismissible(
           key: ValueKey(expenses[index]),
           onDismissed: (direction) => onRemoveExpense(expenses[index]),
-          child: ExpenseItem(expense: expenses[index]),
+          child: ExpenseItem(
+            expense: expenses[index],
+            idExpense: index + 1,
+          ),
         ),
       ),
     );

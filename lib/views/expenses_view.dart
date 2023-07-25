@@ -45,6 +45,17 @@ class _ExpensesViewState extends State<ExpensesView> {
 
   @override
   Widget build(BuildContext context) {
+    Widget mainContent = const Center(
+      child: Text('No Expenses found, Start adding some!'),
+    );
+
+    if (registeredExpenses.isNotEmpty) {
+      mainContent = ExpensesList(
+        expenses: registeredExpenses,
+        onRemoveExpense: _removeExpense,
+      );
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Flutter Expense Tracker'),
@@ -53,16 +64,12 @@ class _ExpensesViewState extends State<ExpensesView> {
               onPressed: _openAddExpenseOverlay, icon: const Icon(Icons.add)),
         ],
       ),
-      body: SafeArea(
-        child: Column(
-          children: [
-            const Text('The Chart'),
-            ExpensesList(
-              expenses: registeredExpenses,
-              onRemoveExpense: _removeExpense,
-            )
-          ],
-        ),
+      body: Column(
+        children: [
+          const Text('The Chart', style: TextStyle(fontSize: 30)),
+          const SizedBox(height: 16),
+          mainContent,
+        ],
       ),
     );
   }
