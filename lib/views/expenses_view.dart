@@ -34,13 +34,29 @@ class _ExpensesViewState extends State<ExpensesView> {
   }
 
   void _addExpense(Expense expense) {
-    setState(() {});
-    registeredExpenses.add(expense);
+    setState(() {
+      registeredExpenses.add(expense);
+    });
   }
 
   void _removeExpense(Expense expense) {
-    setState(() {});
-    registeredExpenses.remove(expense);
+    final expenseIndex = registeredExpenses.indexOf(expense);
+
+    setState(() {
+      registeredExpenses.remove(expense);
+    });
+    ScaffoldMessenger.of(context).clearSnackBars();
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      duration: const Duration(seconds: 3),
+      content: Text('Expense Deleted (${expense.title})'),
+      action: SnackBarAction(
+          label: 'Undo',
+          onPressed: () {
+            setState(() {
+              registeredExpenses.insert(expenseIndex, expense);
+            });
+          }),
+    ));
   }
 
   @override
